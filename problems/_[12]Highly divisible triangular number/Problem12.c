@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <math.h>
+
+typedef unsigned long long ull;
+
+int NumOfDevisors(ull X);
+
+int main(){
+	int Max_digit;
+	scanf("%d",&Max_digit);
+	int index = 1,nd = 1;//nd=NumofDividors
+	ull trinum = 1;
+	while(nd < Max_digit){
+		trinum = (index)*(index + 1) / 2;
+		nd = NumOfDevisors(trinum);
+		printf("%d\t%9I64u\t%d\n",index,trinum,nd);
+		index++;
+	}
+
+	return 0;
+}
+
+int NumOfDevisors(ull X){
+	ull dev[4000]={0};
+	int dev_mi[4000]={0};
+	ull i = 2;
+	int posi = 0;
+	ull now_dev = 0;
+	int ans = 1;
+	while (X > 1){
+		if (X % i == 0) {
+			if (i > now_dev){
+				posi++;
+				now_dev = i;
+				dev[posi] = i;
+				dev_mi[posi] = 1;
+			} else {
+				dev_mi[posi]++;
+			}
+			X /= i;
+		} else i++;
+	}
+	
+	for (int j = 1;j < posi + 1;j++){
+		//printf("%I64u\t\t%d\n",dev[j],dev_mi[j]);
+		ans *= dev_mi[j]+1;
+	}
+	
+	return ans;
+}
+
+

@@ -1,0 +1,12 @@
+[Problem 10]
+Summation of primes
+
+[Description]
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+Find the sum of all the primes below two million.
+
+[Answer]
+142913828922
+
+[Essentials]
+%I64d or %I64u is helpful in long long int or unsigned long long int.
